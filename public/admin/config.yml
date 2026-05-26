@@ -66,6 +66,7 @@ collections:
           - { label: "START_Y", name: "START_Y", widget: "number" }
           - { label: "PLAYER_MAX_HEALTH", name: "PLAYER_MAX_HEALTH", widget: "number" }
           - { label: "PLAYER_CURRENT_HEALTH", name: "PLAYER_CURRENT_HEALTH", widget: "number" }
+          - { label: "CHEST_BONUS_VALUE", name: "CHEST_BONUS_VALUE", widget: "number" }
 
   - name: "engine"
     label: "Engine Config"
