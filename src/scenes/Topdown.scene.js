@@ -61,5 +61,6 @@ export class TopdownScene extends Phaser.Scene {
 
   update() {
     backgroundComposition.moveBackground(this.cameras.main, this.background);
+    playerComposition.displayPlayerPoints(this.player, this.playerStore);
   }
 }

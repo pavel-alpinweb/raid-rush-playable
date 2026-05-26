@@ -64,6 +64,30 @@ export const playerComposition = {
     return player;
   },
 
+  displayPlayerPoints(player, playerStore) {
+    if (!player?.scene || !playerStore) {
+      return;
+    }
+
+    const scene = player.scene;
+    const healthValue = playerStore.currentHealth;
+
+    if (!player.pointsText) {
+      player.pointsText = scene.add.text(0, 0, String(healthValue), {
+        fontFamily: "Arial",
+        fontSize: "28px",
+        color: "#1e6bff",
+        stroke: "#000000",
+        strokeThickness: 4,
+      });
+      player.pointsText.setOrigin(0.5, 1);
+      player.pointsText.setDepth(player.depth + 1);
+    }
+
+    player.pointsText.setText(String(healthValue));
+    player.pointsText.setPosition(player.x, player.getTopCenter().y);
+  },
+
   configureCameraFollow(scene, player, deadzoneWidth, deadzoneHeight) {
     scene.cameras.main.startFollow(player);
     scene.cameras.main.setDeadzone(deadzoneWidth, deadzoneHeight);
