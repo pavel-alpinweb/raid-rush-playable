@@ -1,15 +1,34 @@
 export const playerComposition = {
+  getSortedFrameNames(scene, textureKey) {
+    return scene.textures
+      .get(textureKey)
+      .getFrameNames()
+      .slice()
+      .sort((a, b) => {
+        const frameA = parseInt(a, 10);
+        const frameB = parseInt(b, 10);
+
+        if (Number.isNaN(frameA) || Number.isNaN(frameB)) {
+          return a.localeCompare(b);
+        }
+
+        return frameA - frameB;
+      });
+  },
+
   preloadPlayerAnimation(scene) {
-    scene.load.atlas("player_wait", "assets/animation/wait.png", "assets/animation/wait.json");
+    scene.load.atlas("player_wait", "assets/animation/hero-idle.png", "assets/animation/hero-idle.json");
     scene.load.atlas("player_move", "assets/animation/move.png", "assets/animation/move.json");
     scene.load.atlas("player_jump", "assets/animation/jump.png", "assets/animation/jump.json");
   },
 
   preparePlayerAnimation(scene) {
+    const waitFrameNames = this.getSortedFrameNames(scene, "player_wait");
+
     scene.anims.create({
       key: "player_wait",
-      frames: scene.anims.generateFrameNames("player_wait", { start: 1, end: 8 }),
-      frameRate: 10,
+      frames: waitFrameNames.map((frame) => ({ key: "player_wait", frame })),
+      frameRate: 15,
       repeat: -1
     });
     scene.anims.create({
@@ -27,7 +46,8 @@ export const playerComposition = {
   },
 
   createPlayer(scene, x, y, displayWidth, displayHeight, bodyWidth, bodyHeight, speed, maxHealth) {
-    const player = scene.physics.add.sprite(x, y, "player_wait", "1")
+    const [firstWaitFrame] = this.getSortedFrameNames(scene, "player_wait");
+    const player = scene.physics.add.sprite(x, y, "player_wait", firstWaitFrame)
       .setBodySize(bodyWidth, bodyHeight)
       .setDisplaySize(displayWidth, displayHeight)
       .setOrigin(0.5, 1)
