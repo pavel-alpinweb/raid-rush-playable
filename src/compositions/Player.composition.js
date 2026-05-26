@@ -64,7 +64,7 @@ export const playerComposition = {
     return player;
   },
 
-  displayPlayerPoints(player, playerStore) {
+  displayPlayerHealth(player, playerStore) {
     if (!player?.scene || !playerStore) {
       return;
     }
