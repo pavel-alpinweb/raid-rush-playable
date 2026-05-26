@@ -27,8 +27,8 @@ export class TopdownScene extends Phaser.Scene {
     playerComposition.preparePlayerAnimation(this);
     this.player = playerComposition.createPlayer(
       this,
-      this.cameras.main.width / 2,
-      this.cameras.main.height / 2,
+      Config.START_X,
+      Config.START_Y,
       Config.PLAYER_DISPLAY_WIDTH,
       Config.PLAYER_DISPLAY_HEIGHT,
       Config.PLAYER_TOPDOWN_BODY_WIDTH,
