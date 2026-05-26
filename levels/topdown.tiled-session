@@ -9,7 +9,27 @@
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "": {
+            "scaleInDock": 0.75
+        },
+        "/home/alpinweb/works/Hero Wars/hero-wars-playable/public/assets/levels/tilesets/heart_tiles.tsx": {
             "scaleInDock": 1
+        },
+        "/home/alpinweb/works/phaser-vue-start-template/public/assets/levels/tilemaps/topdown.json": {
+            "scale": 0.41018229166666664,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 961.7675068249636,
+                "y": 341.3116627515715
+            }
+        },
+        "/home/alpinweb/works/phaser-vue-start-template/public/assets/levels/tilemaps/topdown.json#door_tiles": {
+            "scaleInDock": 1
+        },
+        "/home/alpinweb/works/phaser-vue-start-template/public/assets/levels/tilemaps/topdown.json#ground_tiles": {
+            "scaleInDock": 1
+        },
+        "/home/alpinweb/works/phaser-vue-start-template/public/assets/levels/tilesets/heart_tiles.tsx": {
+            "dynamicWrapping": false
         },
         "C:/Users/Mark/OneDrive/Desktop/ground_tiles.tsx": {
             "dynamicWrapping": false,
@@ -31,9 +51,9 @@
                 5
             ],
             "scale": 0.5,
-            "selectedLayer": -1,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": -996,
+                "x": -995,
                 "y": 1010
             }
         },
@@ -61,16 +81,11 @@
             "scaleInEditor": 1
         },
         "topdown.tmx": {
-            "expandedObjectLayers": [
-                4,
-                5,
-                3
-            ],
-            "scale": 1,
-            "selectedLayer": 2,
+            "scale": 0.5,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 948,
-                "y": -14
+                "x": 1019,
+                "y": 268
             }
         },
         "topdown.tmx#Grass": {
@@ -81,6 +96,10 @@
             "scaleInDock": 1
         },
         "topdown.tmx#Water": {
+            "scaleInDock": 1
+        },
+        "topdown.tmx#chest": {
+            "dynamicWrapping": true,
             "scaleInDock": 1
         },
         "topdown.tmx#door": {
@@ -114,7 +133,7 @@
     },
     "last.exportedFilePath": "D:/JS/phaser-vue-start-template/public/assets/levels/tilemaps",
     "last.externalTilesetPath": "D:/JS/phaser-vue-start-template/public/assets/levels/tilesets",
-    "last.imagePath": "D:/JS/phaser-vue-start-template/public/assets/levels/tiles",
+    "last.imagePath": "/home/alpinweb/works/Hero Wars/hero-wars-playable/public/assets/img",
     "map.fixedSize": false,
     "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "tmx",
@@ -124,8 +143,8 @@
     ],
     "project": "topdown.tiled-project",
     "recentFiles": [
-        "topdown.tmx",
         "platformer.tmx",
+        "topdown.tmx",
         "D:/JS/phaser-vue-start-template/public/assets/levels/tilesets/heart_tiles.tsx",
         "tilesets/heart_tiles.tsx",
         "D:/JS/phaser-vue-start-template/public/assets/levels/tiles/ground_tiles.tsx"
@@ -133,8 +152,8 @@
     "tileset.embedInMap": true,
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.tileSize": {
-        "height": 60,
-        "width": 60
+        "height": 512,
+        "width": 512
     },
-    "tileset.type": 1
+    "tileset.type": 0
 }

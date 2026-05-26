@@ -104,9 +104,33 @@
          "width":32,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":6,
+         "name":"chest_layer",
+         "objects":[
+                {
+                 "gid":4,
+                 "height":175.818,
+                 "id":24,
+                 "name":"",
+                 "opacity":1,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":195.818,
+                 "x":898.879,
+                 "y":593.545
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":6,
- "nextobjectid":24,
+ "nextlayerid":7,
+ "nextobjectid":25,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.12.1-8-g449813058",
@@ -131,37 +155,17 @@
          "tilewidth":60
         }, 
         {
-         "columns":0,
+         "columns":1,
          "firstgid":4,
-         "grid":
-            {
-             "height":1,
-             "orientation":"orthogonal",
-             "width":1
-            },
+         "image":"..\/..\/img\/chest.png",
+         "imageheight":512,
+         "imagewidth":512,
          "margin":0,
-         "name":"door_tiles",
+         "name":"chest",
          "spacing":0,
-         "tilecount":2,
-         "tileheight":60,
-         "tiles":[
-                {
-                 "id":0,
-                 "image":"..\/tiles\/door.png",
-                 "imageheight":60,
-                 "imagewidth":60
-                }, 
-                {
-                 "id":2,
-                 "image":"..\/tiles\/door2.png",
-                 "imageheight":60,
-                 "imagewidth":60
-                }],
-         "tilewidth":60
-        }, 
-        {
-         "firstgid":7,
-         "source":"..\/tilesets\/heart_tiles.tsx"
+         "tilecount":1,
+         "tileheight":512,
+         "tilewidth":512
         }],
  "tilewidth":60,
  "type":"map",

@@ -22,7 +22,8 @@ export class TopdownScene extends Phaser.Scene {
 
   create() {
     this.background = backgroundComposition.createBackgroundImage(this, this.cameras.main.width, this.cameras.main.height);
-    const[map, groundLayer] = topdownMapComposition.createLevel(this);
+    const[map, groundLayer, chestLayer] = topdownMapComposition.createLevel(this);
+    this.chestLayer = chestLayer;
 
     playerComposition.preparePlayerAnimation(this);
     this.player = playerComposition.createPlayer(

@@ -3,9 +3,7 @@ import {tilemapComposition } from "@/compositions/Tilemap.composition.js";
 export const topdownMapComposition = {
   preloadLevel(scene) {
     scene.load.image("ground_tiles", "assets/levels/tiles/ground_tiles.jpg");
-    scene.load.image("door", "assets/levels/tiles/door.png");
-    scene.load.image("bomb", "assets/levels/tiles/bomb.png");
-    scene.load.image("heart", "assets/levels/tiles/heart.png");
+    scene.load.image("chest", "assets/img/chest.png");
     scene.load.tilemapTiledJSON("topdown-tilemap", "assets/levels/tilemaps/topdown.json");
   },
 
@@ -13,7 +11,8 @@ export const topdownMapComposition = {
     const map = scene.make.tilemap({ key: "topdown-tilemap" });
 
     const groundLayer = tilemapComposition.createTileLayer(map, "ground_tiles", "ground_layer", [3]);
+    const chestLayer = tilemapComposition.createObjectLayer(scene, map, "chest_layer");
 
-    return [map, groundLayer];
+    return [map, groundLayer, chestLayer];
   }
 };
