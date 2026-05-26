@@ -1,3 +1,5 @@
+import * as Phaser from "phaser";
+
 export const playerComposition = {
   getSortedFrameNames(scene, textureKey) {
     return scene.textures
@@ -30,7 +32,7 @@ export const playerComposition = {
       key: "player_wait",
       frames: waitFrameNames.map((frame) => ({ key: "player_wait", frame })),
       frameRate: 15,
-      repeat: -1
+      repeat: -1,
     });
     scene.anims.create({
       key: "player_move",
@@ -42,7 +44,7 @@ export const playerComposition = {
       key: "player_jump",
       frames: scene.anims.generateFrameNames("player_jump", { start: 1, end: 8 }),
       frameRate: 8,
-      repeat: 1
+      repeat: 1,
     });
   },
 
@@ -65,5 +67,32 @@ export const playerComposition = {
   configureCameraFollow(scene, player, deadzoneWidth, deadzoneHeight) {
     scene.cameras.main.startFollow(player);
     scene.cameras.main.setDeadzone(deadzoneWidth, deadzoneHeight);
+  },
+
+  stopPlayer(player) {
+    player.setVelocity(0, 0);
+    player.body?.stop();
+    player.play("player_wait", true);
+    player.currentTarget = null;
+  },
+
+  movePlayerToObject(player, target) {
+    if (!player?.body || !target) {
+      return;
+    }
+
+    const playerCenter = player.getCenter();
+    const targetCenter = target.getCenter();
+    const direction = new Phaser.Math.Vector2(targetCenter.x - playerCenter.x, targetCenter.y - playerCenter.y);
+
+    if (direction.lengthSq() === 0) {
+      this.stopPlayer(player);
+      return;
+    }
+
+    direction.normalize();
+    player.setVelocity(direction.x * player.speed, direction.y * player.speed);
+    player.play("player_move", true);
+    player.currentTarget = target;
   },
 };

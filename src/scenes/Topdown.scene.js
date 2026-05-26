@@ -22,8 +22,8 @@ export class TopdownScene extends Phaser.Scene {
 
   create() {
     this.background = backgroundComposition.createBackgroundImage(this, this.cameras.main.width, this.cameras.main.height);
-    const[map, groundLayer, chestLayer] = topdownMapComposition.createLevel(this);
-    this.chestLayer = chestLayer;
+    const [map, groundLayer, bonusLayer] = topdownMapComposition.createLevel(this);
+    this.bonusLayer = bonusLayer;
 
     playerComposition.preparePlayerAnimation(this);
     this.player = playerComposition.createPlayer(
@@ -40,6 +40,20 @@ export class TopdownScene extends Phaser.Scene {
     playerComposition.configureCameraFollow(this, this.player, this.cameras.main.width / 4, this.cameras.main.height / 4);
 
     this.physics.add.collider(this.player, groundLayer);
+    this.physics.add.overlap(this.player, this.bonusLayer, (player, bonus) => {
+      if (player.currentTarget !== bonus) {
+        return;
+      }
+
+      playerComposition.stopPlayer(player);
+    });
+
+    this.bonusLayer.children.iterate((bonus) => {
+      bonus.setInteractive({ useHandCursor: true });
+      bonus.on("pointerdown", () => {
+        playerComposition.movePlayerToObject(this.player, bonus);
+      });
+    });
   }
 
   update() {

@@ -11,8 +11,8 @@ export const topdownMapComposition = {
     const map = scene.make.tilemap({ key: "topdown-tilemap" });
 
     const groundLayer = tilemapComposition.createTileLayer(map, "ground_tiles", "ground_layer", [3]);
-    const chestLayer = tilemapComposition.createObjectLayer(scene, map, "chest_layer");
+    const bonusLayer = tilemapComposition.createObjectLayer(scene, map, "chest_layer");
 
-    return [map, groundLayer, chestLayer];
+    return [map, groundLayer, bonusLayer];
   }
 };
