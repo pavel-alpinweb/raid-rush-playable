@@ -1,5 +1,6 @@
 import * as Phaser from "phaser";
 import {playerComposition} from "@/compositions/Player.composition.js";
+import {bonusComposition} from "@/compositions/Bonus.composition.js";
 import {sceneComposition} from "@/compositions/scene.composition.js";
 import {backgroundComposition} from "@/compositions/Background.composition.js";
 import {topdownMapComposition} from "@/compositions/TopdownMap.composition.js";
@@ -16,6 +17,7 @@ export class TopdownScene extends Phaser.Scene {
   preload() {
     sceneComposition.preload(this);
     playerComposition.preloadPlayerAnimation(this);
+    bonusComposition.preloadBonusAnimation(this);
     backgroundComposition.preloadBackgroundImage(this);
     topdownMapComposition.preloadLevel(this);
   }
@@ -26,6 +28,7 @@ export class TopdownScene extends Phaser.Scene {
     this.bonusLayer = bonusLayer;
 
     playerComposition.preparePlayerAnimation(this);
+    bonusComposition.prepareBonusAnimation(this);
     this.player = playerComposition.createPlayer(
       this,
       Config.START_X,
