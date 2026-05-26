@@ -1,5 +1,5 @@
 import { app, BrowserWindow } from 'electron';
-import { LEVEL_WIDTH, LEVEL_HEIGHT } from './src/configs/engine.config.js';
+import { GAME_WIDTH, GAME_HEIGHT } from "./src/configs/engine.config.js";
 import path from 'node:path';
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -8,11 +8,11 @@ const appDir = dirname(fileURLToPath(import.meta.url));
 
 function createWindow() {
   const win = new BrowserWindow({
-    width: LEVEL_WIDTH,
-    height: LEVEL_HEIGHT,
+    width: GAME_WIDTH,
+    height: GAME_HEIGHT,
     webPreferences: {
-      nodeIntegration: true
-    }
+      nodeIntegration: true,
+    },
   });
   win.setMenu(null);
   win.loadFile(path.join(appDir, 'dist', 'index.html'));

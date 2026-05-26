@@ -4,7 +4,7 @@ import Phaser from "phaser";
 import { TopdownScene } from "@/scenes/Topdown.scene";
 import Preloader from "@/ui-components/Preloader.component.vue";
 import { usePlayer } from "@/store/player.store";
-import { LEVEL_WIDTH, LEVEL_HEIGHT } from "@/configs/engine.config";
+import { GAME_HEIGHT, GAME_WIDTH } from "@/configs/engine.config";
 import { router } from "@/router.js";
 import { EventBus } from "@/utils/utils.js";
 import * as EventNames from "@/configs/eventNames.config.js";
@@ -19,8 +19,8 @@ onMounted(() => {
     scene: new TopdownScene(playerStore),
     backgroundColor: "#000000",
     scale: {
-      width: LEVEL_WIDTH,
-      height: LEVEL_HEIGHT,
+      width: GAME_WIDTH,
+      height: GAME_HEIGHT,
       mode: Phaser.Scale.FIT,
       parent: gameContainer.value,
       autoCenter: Phaser.Scale.CENTER_BOTH,
@@ -55,8 +55,14 @@ onBeforeUnmount(() => {
 
 <style lang="scss" scoped>
 .game-screen {
+  position: relative;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+}
+
+.game-screen__game-wrapper {
+  position: absolute;
+  inset: 0;
 }
 </style>

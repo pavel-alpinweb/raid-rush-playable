@@ -64,3 +64,14 @@ collections:
           - { label: "PLAYER_DISPLAY_HEIGHT", name: "PLAYER_DISPLAY_HEIGHT", widget: "number" }
           - { label: "PLAYER_MAX_HEALTH", name: "PLAYER_MAX_HEALTH", widget: "number" }
           - { label: "PLAYER_CURRENT_HEALTH", name: "PLAYER_CURRENT_HEALTH", widget: "number" }
+
+  - name: "engine"
+    label: "Engine Config"
+    files:
+      - file: "src/content/configs/engine.json"
+        label: "Engine"
+        name: "engine"
+        format: "json"
+        fields:
+          - { label: "GAME_WIDTH", name: "GAME_WIDTH", widget: "number" }
+          - { label: "GAME_HEIGHT", name: "GAME_HEIGHT", widget: "number" }
