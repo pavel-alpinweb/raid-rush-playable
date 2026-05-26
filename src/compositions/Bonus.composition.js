@@ -30,4 +30,28 @@ export const bonusComposition = {
       repeat: -1,
     });
   },
+
+  displayChestBonus(chest, playerStore) {
+    if (!chest?.scene || !playerStore) {
+      return;
+    }
+
+    const scene = chest.scene;
+    const bonusValue = playerStore.chestBonusValue;
+
+    if (!chest.bonusText) {
+      chest.bonusText = scene.add.text(0, 0, String(bonusValue), {
+        fontFamily: "Arial",
+        fontSize: "28px",
+        color: "#24b24a",
+        stroke: "#000000",
+        strokeThickness: 4,
+      });
+      chest.bonusText.setOrigin(0.5, 1);
+      chest.bonusText.setDepth(chest.depth + 1);
+    }
+
+    chest.bonusText.setText(String(bonusValue));
+    chest.bonusText.setPosition(chest.x - 30, chest.getTopCenter().y + 50);
+  },
 };
