@@ -24,8 +24,6 @@ export class TopdownScene extends Phaser.Scene {
     this.background = backgroundComposition.createBackgroundImage(this, this.cameras.main.width, this.cameras.main.height);
     const[map, groundLayer] = topdownMapComposition.createLevel(this);
 
-    this.userInput = playerComposition.createUserInput(this);
-
     playerComposition.preparePlayerAnimation(this);
     this.player = playerComposition.createPlayer(
       this,
@@ -44,7 +42,6 @@ export class TopdownScene extends Phaser.Scene {
   }
 
   update() {
-    playerComposition.movePlayerOnTopDown(this.player, this.userInput);
     backgroundComposition.moveBackground(this.cameras.main, this.background);
   }
 }
