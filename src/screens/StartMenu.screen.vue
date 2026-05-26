@@ -3,7 +3,6 @@ import { useRouter } from "vue-router";
 import { createI18nContentHelpers } from "@/utils/utils.js";
 import i18next from "@/i18n.js";
 import { UI_LOCALIZATION } from "@/configs/uiLocalization.config.js";
-import MainLogo from "/public/assets/img/Logo.svg?component";
 
 const router = useRouter();
 const { tContent } = createI18nContentHelpers(i18next);
@@ -17,12 +16,9 @@ const goToGame = (event) => {
 <template>
   <div class="start-menu-screen">
     <div class="start-menu-screen__content">
-      <div class="start-menu-screen__logo-container">
-        <MainLogo class="start-menu-screen__logo" />
-      </div>
       <h1 class="start-menu-screen__title">
-        <span class="start-menu-screen__title-main">{{ tContent(UI_LOCALIZATION.main_title) }}</span>
-        <span class="start-menu-screen__title-sub">{{ tContent(UI_LOCALIZATION.main_description) }}</span>
+        <span class="start-menu-screen__title-main">Hero Wars</span>
+        <span class="start-menu-screen__title-sub">Тестовое playable ads</span>
       </h1>
       <form class="start-menu-screen__form" @submit="goToGame">
         <button class="start-menu-screen__btn">
