@@ -1,3 +1,5 @@
+import * as Phaser from "phaser";
+
 export const bonusComposition = {
   getSortedFrameNames(scene, textureKey) {
     return scene.textures
@@ -17,18 +19,40 @@ export const bonusComposition = {
   },
 
   preloadBonusAnimation(scene) {
-    scene.load.atlas("open-chest", "assets/animation/chest.png", "assets/animation/chest.json");
+    scene.load.atlas("chest_animation", "assets/animation/open-chest.png", "assets/animation/open-chest.json");
   },
 
   prepareBonusAnimation(scene) {
-    const chestFrameNames = this.getSortedFrameNames(scene, "chest");
+    const chestFrameNames = this.getSortedFrameNames(scene, "chest_animation").slice().reverse();
 
     scene.anims.create({
       key: "open-chest",
-      frames: chestFrameNames.map((frame) => ({ key: "chest", frame })),
+      frames: chestFrameNames.map((frame) => ({ key: "chest_animation", frame })),
       frameRate: 12,
-      repeat: -1,
+      repeat: 0,
     });
+  },
+
+  getBonus(playerStore, chest) {
+    if (!chest?.scene || !playerStore || chest.isCollected) {
+      return;
+    }
+
+    chest.isCollected = true;
+    chest.body?.stop?.();
+    if (chest.body) {
+      chest.body.enable = false;
+    }
+    chest.disableInteractive?.();
+
+    chest.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+      playerStore.$patch((state) => {
+        state.currentHealth += state.chestBonusValue;
+      });
+      chest.bonusText?.destroy();
+      chest.destroy();
+    });
+    chest.play("open-chest");
   },
 
   displayChestBonus(chest, playerStore) {

@@ -131,10 +131,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "chest.png",
+	"image": "open-chest.png",
 	"format": "RGBA8888",
 	"size": {"w":1938,"h":1381},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:0213cbc7856440b5df86999919f7f1ee:a2e8a3f7bd58ff37614beb2033189f5a:d0951faa14b608797f96616a345e52d5$"
+	"smartupdate": "$TexturePacker:SmartUpdate:7065efe250e4189e424b0eef041d0584:a2e8a3f7bd58ff37614beb2033189f5a:81b99ea113594dffcc337637a5e07cc8$"
 }
 }
