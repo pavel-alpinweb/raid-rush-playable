@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="60" tileheight="60" infinite="1" nextlayerid="6" nextobjectid="24">
+<map version="1.10" tiledversion="1.12.1-8-g449813058" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="60" tileheight="60" infinite="1" nextlayerid="6" nextobjectid="24">
  <editorsettings>
   <export target="../public/assets/levels/tilemaps/topdown.json" format="json"/>
  </editorsettings>
@@ -93,55 +93,4 @@
 </chunk>
   </data>
  </layer>
- <objectgroup id="3" name="door_layer" locked="1">
-  <object id="15" type="Door" gid="4" x="929" y="32" width="60" height="60">
-   <properties>
-    <property name="imageName" value="door"/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup id="4" name="heart_layer">
-  <object id="16" type="Heart" gid="8" x="840" y="120" width="32" height="32">
-   <properties>
-    <property name="imageName" value="heart"/>
-   </properties>
-  </object>
-  <object id="21" type="Heart" gid="8" x="720" y="-60" width="32" height="32">
-   <properties>
-    <property name="imageName" value="heart"/>
-   </properties>
-  </object>
-  <object id="22" type="Heart" gid="8" x="960" y="360" width="32" height="32">
-   <properties>
-    <property name="imageName" value="heart"/>
-   </properties>
-  </object>
-  <object id="23" type="Heart" gid="8" x="960" y="-240" width="32" height="32">
-   <properties>
-    <property name="imageName" value="heart"/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup id="5" name="bomb_layer">
-  <object id="17" type="Bomb" gid="7" x="1020" y="120" width="60" height="60">
-   <properties>
-    <property name="imageName" value="bomb"/>
-   </properties>
-  </object>
-  <object id="18" type="Bomb" gid="7" x="1080" y="0" width="60" height="60">
-   <properties>
-    <property name="imageName" value="bomb"/>
-   </properties>
-  </object>
-  <object id="19" type="Bomb" gid="7" x="1140" y="240" width="60" height="60">
-   <properties>
-    <property name="imageName" value="bomb"/>
-   </properties>
-  </object>
-  <object id="20" type="Bomb" gid="7" x="660" y="120" width="60" height="60">
-   <properties>
-    <property name="imageName" value="bomb"/>
-   </properties>
-  </object>
- </objectgroup>
 </map>

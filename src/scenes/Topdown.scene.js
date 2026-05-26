@@ -22,7 +22,7 @@ export class TopdownScene extends Phaser.Scene {
 
   create() {
     this.background = backgroundComposition.createBackgroundImage(this, this.cameras.main.width, this.cameras.main.height);
-    const[map, groundLayer, doorLayer, heartLayer, bombLayer] = topdownMapComposition.createLevel(this);
+    const[map, groundLayer] = topdownMapComposition.createLevel(this);
 
     this.userInput = playerComposition.createUserInput(this);
 
@@ -41,13 +41,6 @@ export class TopdownScene extends Phaser.Scene {
     playerComposition.configureCameraFollow(this, this.player, this.cameras.main.width / 4, this.cameras.main.height / 4);
 
     this.physics.add.collider(this.player, groundLayer);
-    this.physics.add.overlap(this.player, doorLayer, () => EventBus.emit(EventNames.GO_TO_PLATFORM));
-    this.physics.add.collider(this.player, heartLayer, (player, heart) => {
-      playerComposition.handleHeartCollision(player, heart, this.playerStore);
-    });
-    this.physics.add.collider(this.player, bombLayer, (player, bomb) => {
-      playerComposition.handleBombCollision(player, bomb, this.playerStore);
-    });
   }
 
   update() {
