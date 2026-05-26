@@ -1,6 +1,3 @@
-import Phaser from "phaser";
-import {PLAYER_JUMP_MULTIPLICATOR, PLAYER_FALL_MULTIPLICATOR, HEAL_VALUE, BOMB_DAMAGE} from "@/configs/gameplay.config.js";
-
 export const playerComposition = {
   preloadPlayerAnimation(scene) {
     scene.load.atlas("player_wait", "assets/animation/wait.png", "assets/animation/wait.json");
