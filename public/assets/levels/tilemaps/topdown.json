@@ -144,7 +144,7 @@
                         {
                          "name":"damage",
                          "type":"int",
-                         "value":10
+                         "value":40
                         }, 
                         {
                          "name":"spriteName",

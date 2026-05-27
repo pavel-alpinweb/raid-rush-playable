@@ -120,4 +120,14 @@ export const playerComposition = {
     player.play("player_move", true);
     player.currentTarget = target;
   },
+
+  destroyPlayer(player, playerStore) {
+    playerStore.$patch((state) => {
+      player.setVelocity(0, 0);
+      player.body?.stop();
+      player.play("player_wait", true);
+      state.isGameOver = true;
+      state.currentHealth = 0;
+    });
+  },
 };
