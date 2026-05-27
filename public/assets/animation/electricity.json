@@ -1,0 +1,156 @@
+{"frames": {
+
+"Elements - Electricity 014 Charge_00000.png":
+{
+	"frame": {"x":3,"y":0,"w":746,"h":828},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":74,"y":67,"w":746,"h":828},
+	"sourceSize": {"w":1000,"h":1000}
+},
+"Elements - Electricity 014 Charge_00001.png":
+{
+	"frame": {"x":0,"y":0,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":1000,"h":1000}
+},
+"Elements - Electricity 014 Charge_00002.png":
+{
+	"frame": {"x":749,"y":0,"w":764,"h":801},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":27,"y":96,"w":764,"h":801},
+	"sourceSize": {"w":1000,"h":1000}
+},
+"Elements - Electricity 014 Charge_00003.png":
+{
+	"frame": {"x":0,"y":0,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":1000,"h":1000}
+},
+"Elements - Electricity 014 Charge_00004.png":
+{
+	"frame": {"x":1794,"y":828,"w":925,"h":751},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":115,"w":925,"h":751},
+	"sourceSize": {"w":1000,"h":1000}
+},
+"Elements - Electricity 014 Charge_00005.png":
+{
+	"frame": {"x":0,"y":0,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":1000,"h":1000}
+},
+"Elements - Electricity 014 Charge_00006.png":
+{
+	"frame": {"x":2719,"y":828,"w":927,"h":723},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":137,"w":927,"h":723},
+	"sourceSize": {"w":1000,"h":1000}
+},
+"Elements - Electricity 014 Charge_00007.png":
+{
+	"frame": {"x":0,"y":0,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":1000,"h":1000}
+},
+"Elements - Electricity 014 Charge_00008.png":
+{
+	"frame": {"x":3087,"y":0,"w":880,"h":684},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":54,"y":165,"w":880,"h":684},
+	"sourceSize": {"w":1000,"h":1000}
+},
+"Elements - Electricity 014 Charge_00009.png":
+{
+	"frame": {"x":0,"y":0,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":1000,"h":1000}
+},
+"Elements - Electricity 014 Charge_00010.png":
+{
+	"frame": {"x":895,"y":828,"w":899,"h":725},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":55,"y":98,"w":899,"h":725},
+	"sourceSize": {"w":1000,"h":1000}
+},
+"Elements - Electricity 014 Charge_00011.png":
+{
+	"frame": {"x":0,"y":0,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":1000,"h":1000}
+},
+"Elements - Electricity 014 Charge_00012.png":
+{
+	"frame": {"x":0,"y":0,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":1000,"h":1000}
+},
+"Elements - Electricity 014 Charge_00013.png":
+{
+	"frame": {"x":0,"y":828,"w":895,"h":750},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":23,"y":111,"w":895,"h":750},
+	"sourceSize": {"w":1000,"h":1000}
+},
+"Elements - Electricity 014 Charge_00014.png":
+{
+	"frame": {"x":0,"y":0,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":1000,"h":1000}
+},
+"Elements - Electricity 014 Charge_00015.png":
+{
+	"frame": {"x":2280,"y":0,"w":807,"h":749},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":51,"y":116,"w":807,"h":749},
+	"sourceSize": {"w":1000,"h":1000}
+},
+"Elements - Electricity 014 Charge_00016.png":
+{
+	"frame": {"x":0,"y":0,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":1000,"h":1000}
+},
+"Elements - Electricity 014 Charge_00017.png":
+{
+	"frame": {"x":1513,"y":0,"w":767,"h":808},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":75,"y":116,"w":767,"h":808},
+	"sourceSize": {"w":1000,"h":1000}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "electricity.png",
+	"format": "RGBA8888",
+	"size": {"w":3967,"h":1579},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:396e4bed117c9366367b50a16f04d82f:4428f4bba2a84d2d42fbedac26a0407a:677db78fe247c20d90533b37dfb52d47$"
+}
+}

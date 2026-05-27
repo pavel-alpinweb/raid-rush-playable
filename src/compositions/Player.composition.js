@@ -24,6 +24,7 @@ export const playerComposition = {
     scene.load.atlas("player_move", "assets/animation/hero-run.png", "assets/animation/hero-run.json");
     scene.load.atlas("player_hit", "assets/animation/hero-hit.png", "assets/animation/hero-hit.json");
     scene.load.atlas("player_bonus", "assets/animation/hero-bonus.png", "assets/animation/hero-bonus.json");
+    scene.load.atlas("player_damage", "assets/animation/electricity.png", "assets/animation/electricity.json");
   },
 
   preparePlayerAnimation(scene) {
@@ -31,6 +32,7 @@ export const playerComposition = {
     const moveFrameNames = this.getSortedFrameNames(scene, "player_move");
     const hitFrameNames = this.getSortedFrameNames(scene, "player_hit");
     const bonusFrameNames = this.getSortedFrameNames(scene, "player_bonus");
+    const damageFrameNames = this.getSortedFrameNames(scene, "player_damage");
 
     scene.anims.create({
       key: "player_wait",
@@ -53,6 +55,12 @@ export const playerComposition = {
     scene.anims.create({
       key: "player_bonus",
       frames: bonusFrameNames.map((frame) => ({ key: "player_bonus", frame })),
+      frameRate: 20,
+      repeat: 0,
+    });
+    scene.anims.create({
+      key: "player_damage",
+      frames: damageFrameNames.map((frame) => ({ key: "player_damage", frame })),
       frameRate: 20,
       repeat: 0,
     });
@@ -94,6 +102,28 @@ export const playerComposition = {
     bonusAnimation.play("player_bonus");
 
     return bonusAnimation;
+  },
+
+  createPlayerDamageAnimation(player) {
+    if (!player?.scene) {
+      return null;
+    }
+
+    const scene = player.scene;
+    const [firstDamageFrame] = this.getSortedFrameNames(scene, "player_damage");
+    const damageAnimation = scene.add
+      .sprite(player.x, player.y, "player_damage", firstDamageFrame)
+      .setOrigin(player.originX, player.originY)
+      .setDisplaySize(player.displayWidth, player.displayHeight)
+      .setDepth((player.depth ?? 0) + 1);
+
+    damageAnimation.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+      damageAnimation.destroy();
+    });
+
+    damageAnimation.play("player_damage");
+
+    return damageAnimation;
   },
 
   displayPlayerHealth(player, playerStore) {
@@ -229,14 +259,29 @@ export const playerComposition = {
   },
 
   destroyPlayer(player, playerStore) {
+    if (!player?.scene || !playerStore) {
+      return;
+    }
+
     this.clearTrack(player);
-    playerStore.$patch((state) => {
-      player.setVelocity(0, 0);
-      player.body?.stop();
-      player.play("player_wait", true);
-      state.isGameOver = true;
-      state.currentHealth = 0;
-      state.gameOverText = FAIL_TEXT;
-    });
+    player.setVelocity(0, 0);
+    player.body?.stop();
+    player.play("player_wait", true);
+
+    const damageAnimation = this.createPlayerDamageAnimation(player);
+    const finishGameOver = () => {
+      playerStore.$patch((state) => {
+        state.isGameOver = true;
+        state.currentHealth = 0;
+        state.gameOverText = FAIL_TEXT;
+      });
+    };
+
+    if (damageAnimation) {
+      damageAnimation.once(Phaser.Animations.Events.ANIMATION_COMPLETE, finishGameOver);
+      return;
+    }
+
+    finishGameOver();
   },
 };
