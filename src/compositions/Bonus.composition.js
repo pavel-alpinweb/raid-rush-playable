@@ -1,4 +1,5 @@
 import * as Phaser from "phaser";
+import { playerComposition } from "@/compositions/Player.composition.js";
 
 export const bonusComposition = {
   getSortedFrameNames(scene, textureKey) {
@@ -33,7 +34,7 @@ export const bonusComposition = {
     });
   },
 
-  getBonus(playerStore, chest) {
+  getBonus(playerStore, chest, player) {
     if (!chest?.scene || !playerStore || chest.isCollected) {
       return;
     }
@@ -49,6 +50,7 @@ export const bonusComposition = {
       playerStore.$patch((state) => {
         state.currentHealth += state.chestBonusValue;
       });
+      playerComposition.createPlayerBonusAnimation(player);
       chest.bonusText?.destroy();
       chest.destroy();
     });

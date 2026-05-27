@@ -88,6 +88,7 @@ export const enemiesComposition = {
       enemy.damageText?.destroy();
       enemy.destroy();
       player.play("player_wait", true);
+      playerComposition.createPlayerBonusAnimation(player);
 
       if (enemyLayer.getLength() === 0 && player.scene) {
         player.scene.playerStore?.$patch((state) => {

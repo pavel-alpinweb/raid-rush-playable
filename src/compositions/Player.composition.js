@@ -23,12 +23,14 @@ export const playerComposition = {
     scene.load.atlas("player_wait", "assets/animation/hero-idle.png", "assets/animation/hero-idle.json");
     scene.load.atlas("player_move", "assets/animation/hero-run.png", "assets/animation/hero-run.json");
     scene.load.atlas("player_hit", "assets/animation/hero-hit.png", "assets/animation/hero-hit.json");
+    scene.load.atlas("player_bonus", "assets/animation/hero-bonus.png", "assets/animation/hero-bonus.json");
   },
 
   preparePlayerAnimation(scene) {
     const waitFrameNames = this.getSortedFrameNames(scene, "player_wait");
     const moveFrameNames = this.getSortedFrameNames(scene, "player_move");
     const hitFrameNames = this.getSortedFrameNames(scene, "player_hit");
+    const bonusFrameNames = this.getSortedFrameNames(scene, "player_bonus");
 
     scene.anims.create({
       key: "player_wait",
@@ -48,6 +50,12 @@ export const playerComposition = {
       frameRate: 20,
       repeat: 1,
     });
+    scene.anims.create({
+      key: "player_bonus",
+      frames: bonusFrameNames.map((frame) => ({ key: "player_bonus", frame })),
+      frameRate: 20,
+      repeat: 0,
+    });
   },
 
   createPlayer(scene, x, y, displayWidth, displayHeight, bodyWidth, bodyHeight, speed, maxHealth) {
@@ -64,6 +72,28 @@ export const playerComposition = {
     player.maxHealth = maxHealth;
     player.currentHealth = maxHealth;
     return player;
+  },
+
+  createPlayerBonusAnimation(player) {
+    if (!player?.scene) {
+      return null;
+    }
+
+    const scene = player.scene;
+    const [firstBonusFrame] = this.getSortedFrameNames(scene, "player_bonus");
+    const bonusAnimation = scene.add
+      .sprite(player.x, player.y, "player_bonus", firstBonusFrame)
+      .setOrigin(player.originX, player.originY)
+      .setDisplaySize(player.displayWidth, player.displayHeight)
+      .setDepth((player.depth ?? 0) + 1);
+
+    bonusAnimation.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+      bonusAnimation.destroy();
+    });
+
+    bonusAnimation.play("player_bonus");
+
+    return bonusAnimation;
   },
 
   displayPlayerHealth(player, playerStore) {

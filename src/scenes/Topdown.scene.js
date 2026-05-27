@@ -51,7 +51,7 @@ export class TopdownScene extends Phaser.Scene {
       }
 
       playerComposition.stopPlayer(player);
-      bonusComposition.getBonus(this.playerStore, bonus);
+      bonusComposition.getBonus(this.playerStore, bonus, player);
     });
 
     this.bonusLayer.children.iterate((bonus) => {
