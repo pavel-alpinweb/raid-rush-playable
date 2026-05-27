@@ -24,7 +24,7 @@ const restartGame = () => {
 };
 
 const downloadGame = () => {
-  window.open("https://play.google.com/store/apps/details?id=com.nexters.herowars", "_blank");
+  window.open("https://play.google.com/store/apps/details?id=com.overmobile.keepers", "_blank");
 };
 
 onMounted(() => {
