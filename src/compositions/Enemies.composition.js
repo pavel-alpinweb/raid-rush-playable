@@ -17,14 +17,19 @@ export const enemiesComposition = {
         return frameA - frameB;
       });
   },
-  preloadEnemiesAnimation(scene) {
-    scene.load.atlas("sprut_animation", "assets/animation/sprut.png", "assets/animation/sprut.json");
-  },
   prepareEnemiesAnimation(scene) {
     const sprutFrameNames = this.getSortedFrameNames(scene, "sprut_animation");
     scene.anims.create({
       key: "sprut",
       frames: sprutFrameNames.map((frameName) => ({ key: "sprut_animation", frame: frameName })),
+      frameRate: 12,
+      repeat: -1,
+    });
+
+    const skatFrameNames = this.getSortedFrameNames(scene, "skat_animation");
+    scene.anims.create({
+      key: "skat",
+      frames: skatFrameNames.map((frameName) => ({ key: "skat_animation", frame: frameName })),
       frameRate: 12,
       repeat: -1,
     });

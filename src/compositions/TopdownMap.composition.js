@@ -7,6 +7,7 @@ export const topdownMapComposition = {
     scene.load.image("ground_tiles", "assets/levels/tiles/ground_tiles.jpg");
     scene.load.image("chest", "assets/img/chest.png");
     scene.load.atlas("sprut_animation", "assets/animation/sprut.png", "assets/animation/sprut.json");
+    scene.load.atlas("skat_animation", "assets/animation/skat.png", "assets/animation/skat.json");
     scene.load.tilemapTiledJSON("topdown-tilemap", "assets/levels/tilemaps/topdown.json");
   },
 
@@ -31,7 +32,7 @@ export const topdownMapComposition = {
       state.isGameOver = false;
     });
 
-    const animationKeys = ["player_wait", "player_move", "player_hit", "open-chest", "sprut"];
+    const animationKeys = ["player_wait", "player_move", "player_hit", "open-chest", "sprut", "skat"];
     animationKeys.forEach((animationKey) => {
       if (scene.anims.exists(animationKey)) {
         scene.anims.remove(animationKey);
