@@ -1,6 +1,7 @@
 import * as Phaser from "phaser";
 import {playerComposition} from "@/compositions/Player.composition.js";
 import {bonusComposition} from "@/compositions/Bonus.composition.js";
+import {enemiesComposition} from "@/compositions/Enemies.composition.js";
 import {sceneComposition} from "@/compositions/scene.composition.js";
 import {backgroundComposition} from "@/compositions/Background.composition.js";
 import {topdownMapComposition} from "@/compositions/TopdownMap.composition.js";
@@ -24,8 +25,9 @@ export class TopdownScene extends Phaser.Scene {
 
   create() {
     this.background = backgroundComposition.createBackgroundImage(this, this.cameras.main.width, this.cameras.main.height);
-    const [map, groundLayer, bonusLayer] = topdownMapComposition.createLevel(this);
+    const [map, groundLayer, bonusLayer, enemyLayer] = topdownMapComposition.createLevel(this);
     this.bonusLayer = bonusLayer;
+    this.enemyLayer = enemyLayer;
 
     playerComposition.preparePlayerAnimation(this);
     bonusComposition.prepareBonusAnimation(this);
@@ -65,6 +67,9 @@ export class TopdownScene extends Phaser.Scene {
     playerComposition.displayPlayerHealth(this.player, this.playerStore);
     this.bonusLayer?.children.iterate((bonus) => {
       bonusComposition.displayChestBonus(bonus, this.playerStore);
+    });
+    this.enemyLayer?.children.iterate((enemy) => {
+      enemiesComposition.displayEnemyDamage(enemy);
     });
   }
 }

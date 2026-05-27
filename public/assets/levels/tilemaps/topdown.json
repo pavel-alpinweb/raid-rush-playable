@@ -128,9 +128,44 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":7,
+         "name":"enemies_layer",
+         "objects":[
+                {
+                 "gid":5,
+                 "height":216,
+                 "id":25,
+                 "name":"",
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"damage",
+                         "type":"int",
+                         "value":10
+                        }, 
+                        {
+                         "name":"spriteName",
+                         "type":"string",
+                         "value":"sprut"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":332.20253164557,
+                 "x":545,
+                 "y":-70
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":7,
- "nextobjectid":25,
+ "nextlayerid":8,
+ "nextobjectid":26,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.12.1-8-g449813058",
@@ -166,6 +201,19 @@
          "tilecount":1,
          "tileheight":512,
          "tilewidth":512
+        }, 
+        {
+         "columns":1,
+         "firstgid":5,
+         "image":"..\/..\/img\/sprut-tile.png",
+         "imageheight":316,
+         "imagewidth":486,
+         "margin":0,
+         "name":"sprut",
+         "spacing":0,
+         "tilecount":1,
+         "tileheight":316,
+         "tilewidth":486
         }],
  "tilewidth":60,
  "type":"map",
