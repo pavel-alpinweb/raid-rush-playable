@@ -3,6 +3,7 @@ import { onBeforeUnmount, onMounted, ref } from "vue";
 import Phaser from "phaser";
 import { TopdownScene } from "@/scenes/Topdown.scene";
 import Preloader from "@/ui-components/Preloader.component.vue";
+import GameOverModal from "@/ui-components/GameOverModal.component.vue";
 import { usePlayer } from "@/store/player.store";
 import { GAME_HEIGHT, GAME_WIDTH } from "@/configs/engine.config";
 import { router } from "@/router.js";
@@ -12,6 +13,14 @@ import * as EventNames from "@/configs/eventNames.config.js";
 const gameContainer = ref(null);
 const playerStore = usePlayer();
 let game = null;
+
+const restartGame = () => {
+  window.location.reload();
+};
+
+const downloadGame = () => {
+  window.open("https://play.google.com/store/apps/details?id=com.nexters.herowars", "_blank");
+};
 
 onMounted(() => {
   game = new Phaser.Game({
@@ -50,6 +59,12 @@ onBeforeUnmount(() => {
   <div class="game-screen">
     <Preloader />
     <div ref="gameContainer" class="game-screen__game-wrapper"></div>
+    <GameOverModal
+      :is-show="playerStore.isGameOver"
+      @restart="restartGame"
+      @download="downloadGame"
+      @update:is-show="playerStore.isGameOver = $event"
+    />
   </div>
 </template>
 

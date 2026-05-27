@@ -20,7 +20,7 @@ const onDownload = () => {
 </script>
 
 <template>
-  <UiModal :model-value="isShow" @update:model-value="emit('update:isShow', $event)">
+  <UiModal :model-value="isShow" target=".game-screen__game-wrapper" @update:model-value="emit('update:isShow', $event)">
     <div class="game-over-modal">
       <h2 class="game-over-modal__title">Поражение! Попробовать еще раз?</h2>
       <div class="game-over-modal__actions">
