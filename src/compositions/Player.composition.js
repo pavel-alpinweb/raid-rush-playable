@@ -21,12 +21,13 @@ export const playerComposition = {
   preloadPlayerAnimation(scene) {
     scene.load.atlas("player_wait", "assets/animation/hero-idle.png", "assets/animation/hero-idle.json");
     scene.load.atlas("player_move", "assets/animation/hero-run.png", "assets/animation/hero-run.json");
-    scene.load.atlas("player_jump", "assets/animation/jump.png", "assets/animation/jump.json");
+    scene.load.atlas("player_hit", "assets/animation/hero-hit.png", "assets/animation/hero-hit.json");
   },
 
   preparePlayerAnimation(scene) {
     const waitFrameNames = this.getSortedFrameNames(scene, "player_wait");
     const moveFrameNames = this.getSortedFrameNames(scene, "player_move");
+    const hitFrameNames = this.getSortedFrameNames(scene, "player_hit");
 
     scene.anims.create({
       key: "player_wait",
@@ -41,10 +42,10 @@ export const playerComposition = {
       repeat: -1,
     });
     scene.anims.create({
-      key: "player_jump",
-      frames: scene.anims.generateFrameNames("player_jump", { start: 1, end: 8 }),
-      frameRate: 8,
-      repeat: 1,
+      key: "player_hit",
+      frames: hitFrameNames.map((frame) => ({ key: "player_hit", frame })),
+      frameRate: 20,
+      repeat: -1,
     });
   },
 
