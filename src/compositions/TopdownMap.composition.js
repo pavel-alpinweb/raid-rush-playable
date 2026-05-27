@@ -1,5 +1,6 @@
 import {tilemapComposition } from "@/compositions/Tilemap.composition.js";
 import {enemiesComposition} from "@/compositions/Enemies.composition.js";
+import * as Config from "@/configs/gameplay.config.js";
 
 export const topdownMapComposition = {
   preloadLevel(scene) {
@@ -18,5 +19,25 @@ export const topdownMapComposition = {
     const enemyLayer = tilemapComposition.createEnemyLayer(scene, map, "enemies_layer");
 
     return [map, groundLayer, bonusLayer, enemyLayer];
-  }
+  },
+
+  restartLevel(scene, playerStore) {
+    if (!scene || !playerStore) {
+      return;
+    }
+
+    playerStore.$patch((state) => {
+      state.currentHealth = Config.PLAYER_MAX_HEALTH;
+      state.isGameOver = false;
+    });
+
+    const animationKeys = ["player_wait", "player_move", "player_hit", "open-chest", "sprut"];
+    animationKeys.forEach((animationKey) => {
+      if (scene.anims.exists(animationKey)) {
+        scene.anims.remove(animationKey);
+      }
+    });
+
+    scene.scene.restart();
+  },
 };

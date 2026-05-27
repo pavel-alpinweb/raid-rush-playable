@@ -81,6 +81,10 @@ export class TopdownScene extends Phaser.Scene {
     });
   }
 
+  restartLevel() {
+    topdownMapComposition.restartLevel(this, this.playerStore);
+  }
+
   update() {
     backgroundComposition.moveBackground(this.cameras.main, this.background);
     playerComposition.displayPlayerHealth(this.player, this.playerStore);

@@ -95,7 +95,7 @@
  <objectgroup id="7" name="enemies_layer">
   <object id="25" gid="5" x="445" y="820" width="332.203" height="216">
    <properties>
-    <property name="damage" type="int" value="40"/>
+    <property name="damage" type="int" value="50"/>
     <property name="spriteName" value="sprut"/>
    </properties>
   </object>

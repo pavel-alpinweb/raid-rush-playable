@@ -15,7 +15,8 @@ const playerStore = usePlayer();
 let game = null;
 
 const restartGame = () => {
-  window.location.reload();
+  const topdownScene = game?.scene?.getScene("MainScene");
+  topdownScene?.restartLevel?.();
 };
 
 const downloadGame = () => {
