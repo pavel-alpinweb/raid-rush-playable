@@ -101,6 +101,57 @@ export const playerComposition = {
     player.body?.stop();
     player.play("player_wait", true);
     player.currentTarget = null;
+    this.clearTrack(player);
+  },
+
+  clearTrack(player) {
+    if (!player) {
+      return;
+    }
+
+    const trackDots = player.trackDots ?? [];
+
+    trackDots.forEach((dot) => dot.destroy());
+    player.trackDots = [];
+    player.trackOrigin = null;
+    player.trackDirection = null;
+    player.trackTarget = null;
+  },
+
+  createTrackDots(player, startX, startY, endX, endY) {
+    const scene = player?.scene;
+    if (!scene) {
+      return;
+    }
+
+    const direction = new Phaser.Math.Vector2(endX - startX, endY - startY);
+    const distance = direction.length();
+    if (distance === 0) {
+      return;
+    }
+
+    const dotSpacing = 26;
+    const dotRadius = 6;
+    const dotColor = 0x70d6ff;
+    const dotAlpha = 0.95;
+    const dotDepth = player.depth - 1;
+
+    direction.normalize();
+    const dotCount = Math.max(1, Math.ceil(distance / dotSpacing));
+    const dots = [];
+
+    for (let index = 1; index <= dotCount; index += 1) {
+      const traveled = Math.min(index * dotSpacing, distance);
+      const dot = scene.add.circle(startX + direction.x * traveled, startY + direction.y * traveled, dotRadius, dotColor, dotAlpha);
+      dot.setDepth(dotDepth);
+      dot.trackDistance = traveled;
+      dots.push(dot);
+    }
+
+    player.trackDots = dots;
+    player.trackOrigin = new Phaser.Math.Vector2(startX, startY);
+    player.trackDirection = direction.clone();
+    player.trackTarget = player.currentTarget ?? null;
   },
 
   movePlayerToObject(player, target) {
@@ -121,9 +172,34 @@ export const playerComposition = {
     player.setVelocity(direction.x * player.speed, direction.y * player.speed);
     player.play("player_move", true);
     player.currentTarget = target;
+    this.highlightTrack(player, target);
+  },
+
+  highlightTrack(player, target) {
+    if (!player?.scene || !target?.scene) {
+      this.clearTrack(player);
+      return;
+    }
+
+    const playerCenter = player.getCenter();
+    const targetCenter = target.getCenter();
+    const trackTargetChanged = player.trackTarget !== target;
+
+    if (trackTargetChanged || !player.trackDots?.length || !player.trackOrigin || !player.trackDirection) {
+      this.clearTrack(player);
+      this.createTrackDots(player, playerCenter.x, playerCenter.y, targetCenter.x, targetCenter.y);
+      return;
+    }
+
+    const traveled = new Phaser.Math.Vector2(playerCenter.x - player.trackOrigin.x, playerCenter.y - player.trackOrigin.y).dot(player.trackDirection);
+
+    player.trackDots.forEach((dot) => {
+      dot.setVisible(dot.trackDistance > traveled);
+    });
   },
 
   destroyPlayer(player, playerStore) {
+    this.clearTrack(player);
     playerStore.$patch((state) => {
       player.setVelocity(0, 0);
       player.body?.stop();

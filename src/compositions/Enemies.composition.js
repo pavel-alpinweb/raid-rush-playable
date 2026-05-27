@@ -1,5 +1,6 @@
 import * as Phaser from "phaser";
 import { WIN_TEXT } from "@/configs/gameplay.config.js";
+import { playerComposition } from "@/compositions/Player.composition.js";
 
 export const enemiesComposition = {
   getSortedFrameNames(scene, textureKey) {
@@ -66,6 +67,8 @@ export const enemiesComposition = {
     }
 
     enemy.isDead = true;
+    player.currentTarget = null;
+    playerComposition.clearTrack(player);
     enemy.body?.stop?.();
     if (enemy.body) {
       enemy.body.enable = false;

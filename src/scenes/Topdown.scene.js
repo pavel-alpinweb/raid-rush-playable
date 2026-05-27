@@ -100,6 +100,7 @@ export class TopdownScene extends Phaser.Scene {
   update() {
     backgroundComposition.moveBackground(this.cameras.main, this.background);
     playerComposition.displayPlayerHealth(this.player, this.playerStore);
+    playerComposition.highlightTrack(this.player, this.player.currentTarget);
     this.bonusLayer?.children.iterate((bonus) => {
       bonusComposition.displayChestBonus(bonus, this.playerStore);
     });
