@@ -5,5 +5,6 @@ export const usePlayer = defineStore("player", {
   state: () => ({
     currentHealth: PLAYER_CURRENT_HEALTH,
     chestBonusValue: CHEST_BONUS_VALUE,
+    isGameOver: false,
   }),
 });
