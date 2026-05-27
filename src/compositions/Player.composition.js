@@ -1,4 +1,5 @@
 import * as Phaser from "phaser";
+import { FAIL_TEXT } from "@/configs/gameplay.config.js";
 
 export const playerComposition = {
   getSortedFrameNames(scene, textureKey) {
@@ -129,6 +130,7 @@ export const playerComposition = {
       player.play("player_wait", true);
       state.isGameOver = true;
       state.currentHealth = 0;
+      state.gameOverText = FAIL_TEXT;
     });
   },
 };

@@ -1,5 +1,6 @@
 import { ref, watch } from "vue";
 import GameOverModal from "./GameOverModal.component.vue";
+import { FAIL_TEXT } from "@/configs/gameplay.config.js";
 
 export default {
   title: "UI/GameOverModal",
@@ -9,6 +10,10 @@ export default {
     isShow: {
       control: "boolean",
       description: "Управляет видимостью модального окна",
+    },
+    text: {
+      control: "text",
+      description: "Текст заголовка модального окна",
     },
     onRestart: { action: "restart", description: "Событие при нажатии на кнопку 'Переиграть'" },
     onDownload: { action: "download", description: "Событие при нажатии на кнопку 'Скачать игру'" },
@@ -58,6 +63,7 @@ const Template = (args) => ({
 export const Default = Template.bind({});
 Default.args = {
   isShow: true,
+  text: FAIL_TEXT,
 };
 Default.parameters = {
   docs: {

@@ -6,6 +6,7 @@ import Preloader from "@/ui-components/Preloader.component.vue";
 import GameOverModal from "@/ui-components/GameOverModal.component.vue";
 import { usePlayer } from "@/store/player.store";
 import { GAME_HEIGHT, GAME_WIDTH } from "@/configs/engine.config";
+import { WIN_TEXT, FAIL_TEXT } from "@/configs/gameplay.config.js";
 import { router } from "@/router.js";
 import { EventBus } from "@/utils/utils.js";
 import * as EventNames from "@/configs/eventNames.config.js";
@@ -13,6 +14,9 @@ import * as EventNames from "@/configs/eventNames.config.js";
 const gameContainer = ref(null);
 const playerStore = usePlayer();
 let game = null;
+
+const winText = ref("Победа! Попробовать еще раз?");
+const failText = ref("Поражение! Попробовать еще раз?");
 
 const restartGame = () => {
   const topdownScene = game?.scene?.getScene("MainScene");
@@ -43,6 +47,10 @@ onMounted(() => {
     },
   });
 
+  playerStore.$patch((state) => {
+    state.gameOverText = WIN_TEXT;
+  });
+
   EventBus.on(EventNames.GO_TO_PLATFORM, () => {
     EventBus.off(EventNames.GO_TO_PLATFORM);
     game?.destroy(true);
@@ -60,12 +68,7 @@ onBeforeUnmount(() => {
   <div class="game-screen">
     <Preloader />
     <div ref="gameContainer" class="game-screen__game-wrapper"></div>
-    <GameOverModal
-      :is-show="playerStore.isGameOver"
-      @restart="restartGame"
-      @download="downloadGame"
-      @update:is-show="playerStore.isGameOver = $event"
-    />
+    <GameOverModal :is-show="playerStore.isGameOver" :text="playerStore.gameOverText" @restart="restartGame" @download="downloadGame" @update:is-show="playerStore.isGameOver = $event" />
   </div>
 </template>
 

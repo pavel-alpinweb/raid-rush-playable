@@ -6,5 +6,6 @@ export const usePlayer = defineStore("player", {
     currentHealth: PLAYER_CURRENT_HEALTH,
     chestBonusValue: CHEST_BONUS_VALUE,
     isGameOver: false,
+    gameOverText: "",
   }),
 });

@@ -67,6 +67,8 @@ collections:
           - { label: "PLAYER_MAX_HEALTH", name: "PLAYER_MAX_HEALTH", widget: "number" }
           - { label: "PLAYER_CURRENT_HEALTH", name: "PLAYER_CURRENT_HEALTH", widget: "number" }
           - { label: "CHEST_BONUS_VALUE", name: "CHEST_BONUS_VALUE", widget: "number" }
+          - { label: "WIN_TEXT", name: "WIN_TEXT", widget: "string" }
+          - { label: "FAIL_TEXT", name: "FAIL_TEXT", widget: "string" }
 
   - name: "engine"
     label: "Engine Config"

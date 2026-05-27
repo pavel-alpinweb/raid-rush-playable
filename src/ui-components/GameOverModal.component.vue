@@ -6,6 +6,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  text: {
+    type: String,
+    default: "",
+  },
 });
 
 const emit = defineEmits(["restart", "download", "update:isShow"]);
@@ -22,7 +26,7 @@ const onDownload = () => {
 <template>
   <UiModal :model-value="isShow" target=".game-screen__game-wrapper" @update:model-value="emit('update:isShow', $event)">
     <div class="game-over-modal">
-      <h2 class="game-over-modal__title">Поражение! Попробовать еще раз?</h2>
+      <h2 class="game-over-modal__title">{{ text }}</h2>
       <div class="game-over-modal__actions">
         <button class="game-over-modal__btn" @click="onRestart">Переиграть</button>
         <button class="game-over-modal__btn" @click="onDownload">Скачать игру</button>

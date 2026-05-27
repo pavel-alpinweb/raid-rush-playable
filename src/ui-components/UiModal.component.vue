@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <div v-if="visible" class="ui-modal">
-      <div :style="overlayStyles" class="ui-modal__overlay" @click.self="close">
+      <div :style="overlayStyles" class="ui-modal__overlay">
         <div class="ui-modal__content" :style="contentStyles" @click.stop>
           <slot />
         </div>

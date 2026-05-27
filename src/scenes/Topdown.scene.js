@@ -74,7 +74,7 @@ export class TopdownScene extends Phaser.Scene {
       }
 
       if (this.playerStore.currentHealth > enemy.damage) {
-        enemiesComposition.killEnemy(player, enemy);
+        enemiesComposition.killEnemy(player, enemy, this.enemyLayer);
       } else {
         playerComposition.destroyPlayer(player, this.playerStore);
       }

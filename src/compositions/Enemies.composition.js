@@ -1,4 +1,5 @@
 import * as Phaser from "phaser";
+import { WIN_TEXT } from "@/configs/gameplay.config.js";
 
 export const enemiesComposition = {
   getSortedFrameNames(scene, textureKey) {
@@ -59,7 +60,7 @@ export const enemiesComposition = {
     enemy.damageText.setPosition(enemy.x, enemy.getTopCenter().y);
   },
 
-  killEnemy(player, enemy) {
+  killEnemy(player, enemy, enemyLayer) {
     if (!player?.scene || !enemy?.scene || enemy.isDead) {
       return;
     }
@@ -84,6 +85,13 @@ export const enemiesComposition = {
       enemy.damageText?.destroy();
       enemy.destroy();
       player.play("player_wait", true);
+
+      if (enemyLayer.getLength() === 0 && player.scene) {
+        player.scene.playerStore?.$patch((state) => {
+          state.isGameOver = true;
+          state.gameOverText = WIN_TEXT;
+        });
+      }
     });
 
     player.play("player_hit");
