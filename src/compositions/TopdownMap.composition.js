@@ -54,7 +54,7 @@ export const topdownMapComposition = {
       state.isGameOver = false;
     });
 
-    const animationKeys = ["player_wait", "player_move", "player_hit", "player_bonus", "open-chest", "sprut", "skat"];
+    const animationKeys = ["player_wait", "player_move", "player_hit", "player_bonus", "player_damage", "open-chest", "sprut", "skat", "enemy_damage"];
     animationKeys.forEach((animationKey) => {
       if (scene.anims.exists(animationKey)) {
         scene.anims.remove(animationKey);

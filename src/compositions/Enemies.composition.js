@@ -19,6 +19,11 @@ export const enemiesComposition = {
         return frameA - frameB;
       });
   },
+
+  preloadEnemiesAnimation(scene) {
+    scene.load.atlas("enemy_damage", "assets/animation/enemy-damage.png", "assets/animation/enemy-damage.json");
+  },
+
   prepareEnemiesAnimation(scene) {
     const sprutFrameNames = this.getSortedFrameNames(scene, "sprut_animation");
     scene.anims.create({
@@ -35,6 +40,36 @@ export const enemiesComposition = {
       frameRate: 12,
       repeat: -1,
     });
+
+    const enemyDamageFrameNames = this.getSortedFrameNames(scene, "enemy_damage");
+    scene.anims.create({
+      key: "enemy_damage",
+      frames: enemyDamageFrameNames.map((frameName) => ({ key: "enemy_damage", frame: frameName })),
+      frameRate: 20,
+      repeat: 0,
+    });
+  },
+
+  createEnemyDeathAnimation(enemy) {
+    if (!enemy?.scene) {
+      return null;
+    }
+
+    const scene = enemy.scene;
+    const [firstDamageFrame] = this.getSortedFrameNames(scene, "enemy_damage");
+    const deathAnimation = scene.add
+      .sprite(enemy.x, enemy.y, "enemy_damage", firstDamageFrame)
+      .setOrigin(enemy.originX, enemy.originY)
+      .setDisplaySize(enemy.displayWidth, enemy.displayHeight)
+      .setDepth((enemy.depth ?? 0) + 1);
+
+    deathAnimation.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+      deathAnimation.destroy();
+    });
+
+    deathAnimation.play("enemy_damage");
+
+    return deathAnimation;
   },
 
   displayEnemyDamage(enemy) {
@@ -85,17 +120,28 @@ export const enemiesComposition = {
         });
       }
 
-      enemy.damageText?.destroy();
-      enemy.destroy();
       player.play("player_wait", true);
       playerComposition.createPlayerBonusAnimation(player);
 
-      if (enemyLayer.getLength() === 0 && player.scene) {
-        player.scene.playerStore?.$patch((state) => {
-          state.isGameOver = true;
-          state.gameOverText = WIN_TEXT;
-        });
+      const enemyDeathAnimation = this.createEnemyDeathAnimation(enemy);
+      const finishEnemyDeath = () => {
+        enemy.damageText?.destroy();
+        enemy.destroy();
+
+        if (enemyLayer.getLength() === 0 && player.scene) {
+          player.scene.playerStore?.$patch((state) => {
+            state.isGameOver = true;
+            state.gameOverText = WIN_TEXT;
+          });
+        }
+      };
+
+      if (enemyDeathAnimation) {
+        enemyDeathAnimation.once(Phaser.Animations.Events.ANIMATION_COMPLETE, finishEnemyDeath);
+        return;
       }
+
+      finishEnemyDeath();
     });
 
     player.play("player_hit");

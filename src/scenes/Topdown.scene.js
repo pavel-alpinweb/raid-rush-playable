@@ -19,6 +19,7 @@ export class TopdownScene extends Phaser.Scene {
     sceneComposition.preload(this);
     playerComposition.preloadPlayerAnimation(this);
     bonusComposition.preloadBonusAnimation(this);
+    enemiesComposition.preloadEnemiesAnimation(this);
     backgroundComposition.preloadBackgroundImage(this);
     topdownMapComposition.preloadLevel(this);
   }
