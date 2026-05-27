@@ -1,5 +1,5 @@
-import {tilemapComposition } from "@/compositions/Tilemap.composition.js";
-import {enemiesComposition} from "@/compositions/Enemies.composition.js";
+import { tilemapComposition } from "@/compositions/Tilemap.composition.js";
+import { enemiesComposition } from "@/compositions/Enemies.composition.js";
 import * as Config from "@/configs/gameplay.config.js";
 
 export const topdownMapComposition = {
@@ -20,6 +20,28 @@ export const topdownMapComposition = {
     const enemyLayer = tilemapComposition.createEnemyLayer(scene, map, "enemies_layer");
 
     return [map, groundLayer, bonusLayer, enemyLayer];
+  },
+
+  highlightTarget(target, color) {
+    if (!target?.postFX) {
+      return null;
+    }
+
+    if (target._highlightFx) {
+      target.postFX.remove(target._highlightFx);
+      target._highlightFx = null;
+    }
+
+    if (color === undefined || color === null) {
+      return null;
+    }
+
+    const parsedColor = typeof color === "string" ? Number.parseInt(color.replace("#", ""), 16) : color;
+    const glowColor = Number.isFinite(parsedColor) ? parsedColor : 0xffffff;
+
+    target._highlightFx = target.postFX.addGlow(glowColor, 2, 0, false, 0.1, 12);
+
+    return target._highlightFx;
   },
 
   restartLevel(scene, playerStore) {

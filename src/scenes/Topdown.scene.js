@@ -56,6 +56,12 @@ export class TopdownScene extends Phaser.Scene {
 
     this.bonusLayer.children.iterate((bonus) => {
       bonus.setInteractive({ useHandCursor: true });
+      bonus.on("pointerover", () => {
+        topdownMapComposition.highlightTarget(bonus, "#ffd966");
+      });
+      bonus.on("pointerout", () => {
+        topdownMapComposition.highlightTarget(bonus);
+      });
       bonus.on("pointerdown", () => {
         playerComposition.movePlayerToObject(this.player, bonus);
       });
@@ -63,6 +69,12 @@ export class TopdownScene extends Phaser.Scene {
 
     this.enemyLayer.children.iterate((enemy) => {
       enemy.setInteractive({ useHandCursor: true });
+      enemy.on("pointerover", () => {
+        topdownMapComposition.highlightTarget(enemy, "#ff5c5c");
+      });
+      enemy.on("pointerout", () => {
+        topdownMapComposition.highlightTarget(enemy);
+      });
       enemy.on("pointerdown", () => {
         playerComposition.movePlayerToObject(this.player, enemy);
       });
