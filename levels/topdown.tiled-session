@@ -149,7 +149,7 @@
         "/home/alpinweb/works/phaser-vue-start-template/public/assets/levels/tilemaps/topdown.json"
     ],
     "project": "topdown.tiled-project",
-    "property.type": "int",
+    "property.type": "string",
     "recentFiles": [
         "/home/alpinweb/works/phaser-vue-start-template/public/assets/levels/tilemaps/topdown.json",
         "topdown.tmx",
@@ -161,8 +161,8 @@
     "tileset.embedInMap": true,
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.tileSize": {
-        "height": 316,
-        "width": 486
+        "height": 492,
+        "width": 660
     },
     "tileset.type": 0
 }

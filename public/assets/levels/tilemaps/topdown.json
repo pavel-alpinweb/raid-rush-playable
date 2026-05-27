@@ -120,8 +120,8 @@
                  "type":"",
                  "visible":true,
                  "width":195.818,
-                 "x":902.879,
-                 "y":415.545
+                 "x":894.879,
+                 "y":421.545
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -136,7 +136,7 @@
          "objects":[
                 {
                  "gid":5,
-                 "height":216,
+                 "height":344,
                  "id":25,
                  "name":"",
                  "opacity":1,
@@ -144,7 +144,7 @@
                         {
                          "name":"damage",
                          "type":"int",
-                         "value":50
+                         "value":60
                         }, 
                         {
                          "name":"spriteName",
@@ -154,9 +154,33 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":332.203,
-                 "x":445,
-                 "y":820
+                 "width":446.203,
+                 "x":785,
+                 "y":956
+                }, 
+                {
+                 "gid":6,
+                 "height":348,
+                 "id":26,
+                 "name":"",
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"damage",
+                         "type":"int",
+                         "value":30
+                        }, 
+                        {
+                         "name":"spriteName",
+                         "type":"string",
+                         "value":"skat"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":451.219512195122,
+                 "x":340,
+                 "y":954
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -165,7 +189,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":26,
+ "nextobjectid":27,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.12.1-8-g449813058",
@@ -214,6 +238,19 @@
          "tilecount":1,
          "tileheight":316,
          "tilewidth":486
+        }, 
+        {
+         "columns":1,
+         "firstgid":6,
+         "image":"..\/..\/img\/skat-tile.png",
+         "imageheight":492,
+         "imagewidth":660,
+         "margin":0,
+         "name":"skat",
+         "spacing":0,
+         "tilecount":1,
+         "tileheight":492,
+         "tilewidth":660
         }],
  "tilewidth":60,
  "type":"map",

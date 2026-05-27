@@ -42,7 +42,7 @@ export class TopdownScene extends Phaser.Scene {
       Config.PLAYER_SPEED,
       Config.PLAYER_MAX_HEALTH
     );
-    playerComposition.configureCameraFollow(this, this.player, this.cameras.main.width / 4, this.cameras.main.height / 4);
+    playerComposition.configureCameraFollow(this, this.player, this.cameras.main.width / 4, this.cameras.main.height / 4, 1.1);
 
     this.physics.add.collider(this.player, groundLayer);
     this.physics.add.overlap(this.player, this.bonusLayer, (player, bonus) => {
