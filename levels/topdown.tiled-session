@@ -3,8 +3,9 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "topdown.tmx",
     "expandedProjectPaths": [
+        "."
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -29,7 +30,8 @@
             "scaleInDock": 1
         },
         "/home/alpinweb/works/phaser-vue-start-template/public/assets/levels/tilesets/heart_tiles.tsx": {
-            "dynamicWrapping": false
+            "dynamicWrapping": false,
+            "scaleInDock": 1
         },
         "C:/Users/Mark/OneDrive/Desktop/ground_tiles.tsx": {
             "dynamicWrapping": false,
@@ -82,10 +84,10 @@
         },
         "topdown.tmx": {
             "scale": 0.5,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 1019,
-                "y": 268
+                "x": 723,
+                "y": 442
             }
         },
         "topdown.tmx#Grass": {
@@ -140,11 +142,14 @@
     "map.tileHeight": 287,
     "map.tileWidth": 329,
     "openFiles": [
+        "topdown.tmx",
+        "/home/alpinweb/works/phaser-vue-start-template/public/assets/levels/tilemaps/topdown.json"
     ],
     "project": "topdown.tiled-project",
     "recentFiles": [
-        "platformer.tmx",
+        "/home/alpinweb/works/phaser-vue-start-template/public/assets/levels/tilemaps/topdown.json",
         "topdown.tmx",
+        "platformer.tmx",
         "D:/JS/phaser-vue-start-template/public/assets/levels/tilesets/heart_tiles.tsx",
         "tilesets/heart_tiles.tsx",
         "D:/JS/phaser-vue-start-template/public/assets/levels/tiles/ground_tiles.tsx"
