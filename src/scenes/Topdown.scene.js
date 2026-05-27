@@ -60,6 +60,23 @@ export class TopdownScene extends Phaser.Scene {
         playerComposition.movePlayerToObject(this.player, bonus);
       });
     });
+
+    this.enemyLayer.children.iterate((enemy) => {
+      enemy.setInteractive({ useHandCursor: true });
+      enemy.on("pointerdown", () => {
+        playerComposition.movePlayerToObject(this.player, enemy);
+      });
+    });
+
+    this.physics.add.overlap(this.player, this.enemyLayer, (player, enemy) => {
+      if (player.currentTarget !== enemy) {
+        return;
+      }
+
+      if (this.playerStore.currentHealth > enemy.damage) {
+        enemiesComposition.killEnemy(player, enemy);
+      }
+    });
   }
 
   update() {

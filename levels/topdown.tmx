@@ -90,10 +90,10 @@
   </data>
  </layer>
  <objectgroup id="6" name="chest_layer">
-  <object id="24" gid="4" x="898.879" y="593.545" width="195.818" height="175.818"/>
+  <object id="24" gid="4" x="902.879" y="415.545" width="195.818" height="175.818"/>
  </objectgroup>
  <objectgroup id="7" name="enemies_layer">
-  <object id="25" gid="5" x="545" y="-70" width="332.203" height="216">
+  <object id="25" gid="5" x="445" y="820" width="332.203" height="216">
    <properties>
     <property name="damage" type="int" value="10"/>
     <property name="spriteName" value="sprut"/>

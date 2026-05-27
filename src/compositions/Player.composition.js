@@ -45,7 +45,7 @@ export const playerComposition = {
       key: "player_hit",
       frames: hitFrameNames.map((frame) => ({ key: "player_hit", frame })),
       frameRate: 20,
-      repeat: -1,
+      repeat: 1,
     });
   },
 

@@ -1,3 +1,5 @@
+import * as Phaser from "phaser";
+
 export const enemiesComposition = {
   getSortedFrameNames(scene, textureKey) {
     return scene.textures
@@ -50,5 +52,35 @@ export const enemiesComposition = {
 
     enemy.damageText.setText(String(damageValue));
     enemy.damageText.setPosition(enemy.x, enemy.getTopCenter().y);
-  }
+  },
+
+  killEnemy(player, enemy) {
+    if (!player?.scene || !enemy?.scene || enemy.isDead) {
+      return;
+    }
+
+    enemy.isDead = true;
+    enemy.body?.stop?.();
+    if (enemy.body) {
+      enemy.body.enable = false;
+    }
+    enemy.disableInteractive?.();
+
+    player.setVelocity(0, 0);
+    player.body?.stop();
+
+    player.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+      if (player.scene) {
+        player.scene.playerStore?.$patch((state) => {
+          state.currentHealth += enemy.damage;
+        });
+      }
+
+      enemy.damageText?.destroy();
+      enemy.destroy();
+      player.play("player_wait", true);
+    });
+
+    player.play("player_hit");
+  },
 };

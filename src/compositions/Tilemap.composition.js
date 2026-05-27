@@ -21,7 +21,7 @@ export const tilemapComposition = {
 
   createEnemyLayer(scene, map, layerName) {
     const objLayerMeta = map.getObjectLayer(layerName);
-    const enemyLayer = scene.add.group();
+    const enemyLayer = scene.physics.add.group();
 
     objLayerMeta.objects.forEach((obj) => {
       const spriteName = extractPropertyValue(obj, "spriteName") ?? extractTilesetNameByGid(map, obj.gid);
@@ -33,10 +33,11 @@ export const tilemapComposition = {
       const animationKey = `${spriteName}_animation`;
       const frameNames = enemiesComposition.getSortedFrameNames(scene, animationKey);
       const firstFrame = frameNames[0];
-      const enemy = scene.add.sprite(obj.x + obj.width / 2, obj.y - obj.height / 2, animationKey, firstFrame);
+      const enemy = scene.physics.add.sprite(obj.x + obj.width / 2, obj.y - obj.height / 2, animationKey, firstFrame);
 
       enemy
         .setDisplaySize(obj.width, obj.height)
+        .setBodySize(obj.width, obj.height)
         .setOrigin(0.5, 1)
         .play(spriteName);
 
