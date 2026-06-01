@@ -39,7 +39,7 @@ const goToGame = (event) => {
   align-items: center;
   justify-content: flex-end;
   padding-bottom: 40px;
-  background: #a09380 url("/public/assets/img/background/sky.png") center center;
+  background: #a09380 url("/assets/img/background/sky.png") center center;
   background-size: cover;
 
   &__content {
