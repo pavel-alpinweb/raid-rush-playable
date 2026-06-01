@@ -1,5 +1,10 @@
 import * as Phaser from "phaser";
 import { FAIL_TEXT } from "@/configs/gameplay.config.js";
+import playerWaitAtlas from "../../public/assets/animation/hero-idle.json";
+import playerMoveAtlas from "../../public/assets/animation/hero-run.json";
+import playerHitAtlas from "../../public/assets/animation/hero-hit.json";
+import playerBonusAtlas from "../../public/assets/animation/hero-bonus.json";
+import playerDamageAtlas from "../../public/assets/animation/electricity.json";
 
 export const playerComposition = {
   getSortedFrameNames(scene, textureKey) {
@@ -20,11 +25,11 @@ export const playerComposition = {
   },
 
   preloadPlayerAnimation(scene) {
-    scene.load.atlas("player_wait", "assets/animation/hero-idle.png", "assets/animation/hero-idle.json");
-    scene.load.atlas("player_move", "assets/animation/hero-run.png", "assets/animation/hero-run.json");
-    scene.load.atlas("player_hit", "assets/animation/hero-hit.png", "assets/animation/hero-hit.json");
-    scene.load.atlas("player_bonus", "assets/animation/hero-bonus.png", "assets/animation/hero-bonus.json");
-    scene.load.atlas("player_damage", "assets/animation/electricity.png", "assets/animation/electricity.json");
+    scene.load.atlas("player_wait", "assets/animation/hero-idle.png", playerWaitAtlas);
+    scene.load.atlas("player_move", "assets/animation/hero-run.png", playerMoveAtlas);
+    scene.load.atlas("player_hit", "assets/animation/hero-hit.png", playerHitAtlas);
+    scene.load.atlas("player_bonus", "assets/animation/hero-bonus.png", playerBonusAtlas);
+    scene.load.atlas("player_damage", "assets/animation/electricity.png", playerDamageAtlas);
   },
 
   preparePlayerAnimation(scene) {

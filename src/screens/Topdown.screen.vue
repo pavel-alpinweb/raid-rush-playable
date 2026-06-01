@@ -29,9 +29,12 @@ const downloadGame = () => {
 
 onMounted(() => {
   game = new Phaser.Game({
-    type: Phaser.AUTO,
+    type: Phaser.CANVAS,
     scene: new TopdownScene(playerStore),
     backgroundColor: "#000000",
+    loader: {
+      imageLoadType: "HTMLImageElement",
+    },
     scale: {
       width: GAME_WIDTH,
       height: GAME_HEIGHT,

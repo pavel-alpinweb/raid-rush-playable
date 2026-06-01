@@ -1,14 +1,17 @@
 import { tilemapComposition } from "@/compositions/Tilemap.composition.js";
 import { enemiesComposition } from "@/compositions/Enemies.composition.js";
 import * as Config from "@/configs/gameplay.config.js";
+import sprutAtlas from "../../public/assets/animation/sprut.json";
+import skatAtlas from "../../public/assets/animation/skat.json";
+import topdownTilemap from "../../public/assets/levels/tilemaps/topdown.json";
 
 export const topdownMapComposition = {
   preloadLevel(scene) {
     scene.load.image("ground_tiles", "assets/levels/tiles/ground_tiles.jpg");
     scene.load.image("chest", "assets/img/chest.png");
-    scene.load.atlas("sprut_animation", "assets/animation/sprut.png", "assets/animation/sprut.json");
-    scene.load.atlas("skat_animation", "assets/animation/skat.png", "assets/animation/skat.json");
-    scene.load.tilemapTiledJSON("topdown-tilemap", "assets/levels/tilemaps/topdown.json");
+    scene.load.atlas("sprut_animation", "assets/animation/sprut.png", sprutAtlas);
+    scene.load.atlas("skat_animation", "assets/animation/skat.png", skatAtlas);
+    scene.load.tilemapTiledJSON("topdown-tilemap", topdownTilemap);
   },
 
   createLevel(scene) {

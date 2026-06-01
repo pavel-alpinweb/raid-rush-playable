@@ -1,6 +1,7 @@
 import * as Phaser from "phaser";
 import { WIN_TEXT } from "@/configs/gameplay.config.js";
 import { playerComposition } from "@/compositions/Player.composition.js";
+import enemyDamageAtlas from "../../public/assets/animation/enemy-damage.json";
 
 export const enemiesComposition = {
   getSortedFrameNames(scene, textureKey) {
@@ -21,7 +22,7 @@ export const enemiesComposition = {
   },
 
   preloadEnemiesAnimation(scene) {
-    scene.load.atlas("enemy_damage", "assets/animation/enemy-damage.png", "assets/animation/enemy-damage.json");
+    scene.load.atlas("enemy_damage", "assets/animation/enemy-damage.png", enemyDamageAtlas);
   },
 
   prepareEnemiesAnimation(scene) {
