@@ -4,13 +4,17 @@ import * as Config from "@/configs/gameplay.config.js";
 import sprutAtlas from "../../public/assets/animation/sprut.json";
 import skatAtlas from "../../public/assets/animation/skat.json";
 import topdownTilemap from "../../public/assets/levels/tilemaps/topdown.json";
+import groundTilesImage from "../../public/assets/levels/tiles/ground_tiles.jpg?inline";
+import chestImage from "../../public/assets/img/chest.png?inline";
+import sprutImage from "../../public/assets/animation/sprut.png?inline";
+import skatImage from "../../public/assets/animation/skat.png?inline";
 
 export const topdownMapComposition = {
   preloadLevel(scene) {
-    scene.load.image("ground_tiles", "assets/levels/tiles/ground_tiles.jpg");
-    scene.load.image("chest", "assets/img/chest.png");
-    scene.load.atlas("sprut_animation", "assets/animation/sprut.png", sprutAtlas);
-    scene.load.atlas("skat_animation", "assets/animation/skat.png", skatAtlas);
+    scene.load.image("ground_tiles", groundTilesImage);
+    scene.load.image("chest", chestImage);
+    scene.load.atlas("sprut_animation", sprutImage, sprutAtlas);
+    scene.load.atlas("skat_animation", skatImage, skatAtlas);
     scene.load.tilemapTiledJSON("topdown-tilemap", topdownTilemap);
   },
 

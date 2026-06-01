@@ -5,6 +5,11 @@ import playerMoveAtlas from "../../public/assets/animation/hero-run.json";
 import playerHitAtlas from "../../public/assets/animation/hero-hit.json";
 import playerBonusAtlas from "../../public/assets/animation/hero-bonus.json";
 import playerDamageAtlas from "../../public/assets/animation/electricity.json";
+import playerWaitImage from "../../public/assets/animation/hero-idle.png?inline";
+import playerMoveImage from "../../public/assets/animation/hero-run.png?inline";
+import playerHitImage from "../../public/assets/animation/hero-hit.png?inline";
+import playerBonusImage from "../../public/assets/animation/hero-bonus.png?inline";
+import playerDamageImage from "../../public/assets/animation/electricity.png?inline";
 
 export const playerComposition = {
   getSortedFrameNames(scene, textureKey) {
@@ -25,11 +30,11 @@ export const playerComposition = {
   },
 
   preloadPlayerAnimation(scene) {
-    scene.load.atlas("player_wait", "assets/animation/hero-idle.png", playerWaitAtlas);
-    scene.load.atlas("player_move", "assets/animation/hero-run.png", playerMoveAtlas);
-    scene.load.atlas("player_hit", "assets/animation/hero-hit.png", playerHitAtlas);
-    scene.load.atlas("player_bonus", "assets/animation/hero-bonus.png", playerBonusAtlas);
-    scene.load.atlas("player_damage", "assets/animation/electricity.png", playerDamageAtlas);
+    scene.load.atlas("player_wait", playerWaitImage, playerWaitAtlas);
+    scene.load.atlas("player_move", playerMoveImage, playerMoveAtlas);
+    scene.load.atlas("player_hit", playerHitImage, playerHitAtlas);
+    scene.load.atlas("player_bonus", playerBonusImage, playerBonusAtlas);
+    scene.load.atlas("player_damage", playerDamageImage, playerDamageAtlas);
   },
 
   preparePlayerAnimation(scene) {

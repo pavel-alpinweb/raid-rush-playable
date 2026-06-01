@@ -1,6 +1,8 @@
+import backgroundGrassImage from "../../public/assets/img/background/grass_tile.jpg?inline";
+
 export const backgroundComposition = {
   preloadBackgroundImage(scene) {
-    scene.load.image("background_grass", "assets/img/background/grass_tile.jpg");
+    scene.load.image("background_grass", backgroundGrassImage);
   },
 
   createBackgroundImage(scene, width, height) {

@@ -1,6 +1,7 @@
 import * as Phaser from "phaser";
 import { playerComposition } from "@/compositions/Player.composition.js";
 import chestAtlas from "../../public/assets/animation/open-chest.json";
+import chestImage from "../../public/assets/animation/open-chest.png?inline";
 
 export const bonusComposition = {
   getSortedFrameNames(scene, textureKey) {
@@ -21,7 +22,7 @@ export const bonusComposition = {
   },
 
   preloadBonusAnimation(scene) {
-    scene.load.atlas("chest_animation", "assets/animation/open-chest.png", chestAtlas);
+    scene.load.atlas("chest_animation", chestImage, chestAtlas);
   },
 
   prepareBonusAnimation(scene) {
